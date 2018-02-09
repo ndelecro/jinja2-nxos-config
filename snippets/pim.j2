@@ -1,0 +1,7 @@
+ip pim rp-address {{ config['rp-address'] }} group-list {{ config['rp-address-group-list'] }}
+{% if 'ssm-range' in config -%}
+ip pim ssm range {{ config['ssm-range'] }}
+{% endif -%}
+{% if 'spt-threshold-infinity-group-list' in config -%}
+ip pim spt-threshold infinity {{ config['spt-threshold-infinity-group-list'] }}
+{% endif -%}

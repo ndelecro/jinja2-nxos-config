@@ -1,0 +1,49 @@
+coresnippets:
+    - features
+    - tcam-carving
+    - nbm
+    - pim
+
+features:
+    - feature pim
+    - feature ospf
+    - feature nbm
+
+tcam-carving:
+    - region: ing-racl
+      size: 256
+    - region: ing-l2-qos
+      size: 0
+    - region: ing-l3-vlan-qos
+      size: 256
+    - region: ing-l2-span-filter
+      size: 0
+    - region: ing-l3-span-filter
+      size: 0
+    - region: span
+      size: 0
+    - region: egr-racl
+      size: 256
+    - region: ing-ifacl
+      size: 256
+    - region: ing-nbm
+      size: 1536
+
+nbm:
+    unicast-fabric-bandwidth: 10
+    flow-bandwidth: 1500
+    flow-policy:
+        - name: FP_3G_HD
+          bandwidth: 3000
+          group-range-start: 239.2.0.0
+          group-range-end: 239.2.255.255
+        - name: FP_12G_4K_ULTRA_HD
+          bandwidth: 12000
+          group-range-start: 239.3.0.0
+          group-range-end: 239.3.255.255        
+
+pim:
+    rp-address: 100.100.100.100
+    rp-address-group-list: 224.0.0.0/4
+    ssm-range: none
+    spt-threshold-infinity-group-list: mcast-all

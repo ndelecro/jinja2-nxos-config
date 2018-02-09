@@ -1,0 +1,13 @@
+{% if 'unicast-fabric-bandwidth' in config -%}
+nbm reserve unicast fabric bandwidth {{ config['unicast-fabric-bandwidth'] }}
+{% endif -%}
+nbm flow bandwidth {{ config['flow-bandwidth'] }}
+nbm mode flow
+{% if 'flow-policy' in config %}
+nbm flow-policy
+{% for policy in config['flow-policy'] -%}
+  policy {{ policy['name'] }}
+    bandwidth {{ policy['bandwidth'] }}
+    ip group-range {{ policy['group-range-start'] }} to {{ policy['group-range-end'] }}
+{% endfor %}
+{% endif %}
