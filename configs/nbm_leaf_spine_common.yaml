@@ -2,7 +2,9 @@ coresnippets:
     - features
     - tcam-carving
     - nbm
+    - pbr
     - pim
+    - nbm_common_interfaces
 
 features:
     - feature pim
@@ -42,8 +44,18 @@ nbm:
           group-range-start: 239.3.0.0
           group-range-end: 239.3.255.255        
 
+pbr:
+    - route-map-name: mcast-all
+      entries:
+        - type: "ip multicast group"
+          group: 224.0.0.0/4
+
 pim:
     rp-address: 100.100.100.100
     rp-address-group-list: 224.0.0.0/4
     ssm-range: none
     spt-threshold-infinity-group-list: mcast-all
+
+nbm_common_interfaces:
+    - eth1/49
+    - eth1/50
