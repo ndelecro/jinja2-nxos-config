@@ -1,0 +1,7 @@
+{% for intf in config -%}
+interface {{ intf }}
+  mtu 9216
+  ip ospf passive-interface
+  ip router ospf NBM area 0
+  ip pim sparse-mode
+{% endfor %}

@@ -1,0 +1,6 @@
+{% for route_map in config -%}
+route-map {{ route_map['route-map-name'] }}
+{% for entries in route_map['entries'] %}
+  match {{ entries['type'] }} {{ entries['group'] }}
+{% endfor %}
+{% endfor %}
